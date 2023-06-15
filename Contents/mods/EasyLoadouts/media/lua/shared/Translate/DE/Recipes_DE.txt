@@ -1,0 +1,4 @@
+Recipes_DE =
+{
+	Recipe_Make_Loadout_Note = "Erstelle Loadout Liste",
+}

@@ -1,0 +1,26 @@
+module EasyLoadout
+{
+	imports
+	{
+		Base
+	}
+
+    item LoadoutNote
+    {
+        DisplayName	=	Loadout Note,
+		Type = Literature,
+	    DisplayCategory = Literature,
+		Icon	=	Notebook,
+		Weight = 0.1,
+		CanBeWrite  =   false,
+        WorldStaticModel = EmptyNotebook,
+    }
+
+	recipe Make Loadout Note
+	{
+	   [Recipe.GetItemTypes.Write],
+       Notebook,
+       Result:EasyLoadout.LoadoutNote,
+       Time:10.0,
+    }
+}

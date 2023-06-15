@@ -1,0 +1,15 @@
+UI_EN =
+{
+    UI_EasyLoadout_ModOptionType = "Save type",
+    UI_EasyLoadout_Tooltip_ModOptionType = "Defences whether apparel and equipment are stored by their ID or by their name.",
+    UI_EasyLoadout_ModOptionType_Id = "By Unique ID",
+    UI_EasyLoadout_ModOptionType_Name = "By Item Name",
+    UI_EasyLoadout_ModOptionUndress = "Undress",
+    UI_EasyLoadout_Tooltip_ModOptionUndress = "Remove all worn clothing before putting on the loadout.",
+    UI_EasyLoadout_ModOptionApparel = "Apparel",
+    UI_EasyLoadout_Tooltip_ModOptionApparel = "Loadout is applied to apparel.",
+    UI_EasyLoadout_ModOptionEquipment = "Equipment",
+    UI_EasyLoadout_Tooltip_ModOptionEquipment = "Loadout is applied to equipment.",
+    UI_EasyLoadout_ModOptionItems = "Items",
+    UI_EasyLoadout_Tooltip_ModOptionItems = "Loadout is applied to items.",
+}

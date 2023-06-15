@@ -1,0 +1,15 @@
+UI_DE =
+{
+    UI_EasyLoadout_ModOptionType = "Speichertyp",
+    UI_EasyLoadout_Tooltip_ModOptionType = "Defeniert ob Kleidung und Ausrüstung über ihre ID oder ihren Namen gespeichert werden.",
+    UI_EasyLoadout_ModOptionType_Id = "Nach eindeutiger ID",
+    UI_EasyLoadout_ModOptionType_Name = "Nach Name",
+    UI_EasyLoadout_ModOptionUndress = "Ausziehen",
+    UI_EasyLoadout_Tooltip_ModOptionUndress = "Entferne alle getragene kleidung bevor das Loadout angezogen wird.",
+    UI_EasyLoadout_ModOptionApparel = "Kleidung",
+    UI_EasyLoadout_Tooltip_ModOptionApparel = "Loadout wird auf Kleidung angewendet.",
+    UI_EasyLoadout_ModOptionEquipment = "Ausrüstung",
+    UI_EasyLoadout_Tooltip_ModOptionEquipment = "Loadout wird auf Ausrüstung angewendet.",
+    UI_EasyLoadout_ModOptionItems = "Gegenstände",
+    UI_EasyLoadout_Tooltip_ModOptionItems = "Loadout wird auf Gegenstände angewendet.",
+}

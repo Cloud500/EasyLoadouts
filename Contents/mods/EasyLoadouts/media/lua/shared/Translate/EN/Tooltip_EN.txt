@@ -1,0 +1,17 @@
+Tooltip_EN = {
+    Tooltip_EasyLoadoutApplyTagNotAllowed = "In this container it is not possible to apply the Loadout.",
+    Tooltip_EasyLoadoutFunctionApparel = "If enabled, Apparel will be included in the loadout.",
+    Tooltip_EasyLoadoutFunctionEquipment = "If enabled, Equipment (weapons/tools) will be included in the loadout.",
+    Tooltip_EasyLoadoutFunctionItem = "If enabled, anything that is not Apparel or Equipment is included in the loadout.",
+    Tooltip_EasyLoadoutFunctionPrivate = "Set the loadout to private so that only the player (or admins) can use/edit this loadout.",
+    Tooltip_EasyLoadoutFunctionUndress = "Remove all worn clothing before the loadout is worn.",
+    Tooltip_EasyLoadoutConfigRemoveTag = "Remove the loadout from this container.",
+    Tooltip_EasyLoadoutRegisterLoadout = "Register the items in the container for this Loadout (overwrites the loadout).",
+    Tooltip_EasyLoadoutRegisterAndStoreLoadout = "Register the items in the inventory (worn and not worn) for this loadout (overwrites the loadout).",
+    Tooltip_EasyLoadoutRemoveLoadout = "Remove all items from the loadout.",
+    Tooltip_EasyLoadoutWearLoadout = "Take the items from the Loadout and equip Apparel/Equipment.",
+    Tooltip_EasyLoadoutPickUpLoadout = "Take the items from the Loadout",
+    Tooltip_EasyLoadoutStoreLoadout = "Put the items of the Loadout back into the container (worn and not worn).",
+    Tooltip_EasyLoadoutConfigTypeId = "Loadout refers to the Ids of apparel and equipment",
+    Tooltip_EasyLoadoutConfigTypeName = "Loadout refers to the name of the apparel and equipment",
+}

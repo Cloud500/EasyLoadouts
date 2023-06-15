@@ -1,0 +1,23 @@
+ContextMenu_EN = {
+    ContextMenu_EasyLoadoutApplyTag = "Apply Loadout",
+    ContextMenu_EasyLoadoutRenameTag = "Rename Loadout",
+    ContextMenu_EasyLoadoutConfigType = "Type",
+    ContextMenu_EasyLoadoutConfigTypeId = "Apparel/Equipment by Unique ID",
+    ContextMenu_EasyLoadoutConfigTypeName = "Apparel/Equipment by Name",
+    ContextMenu_EasyLoadoutFunctions = "Functions",
+    ContextMenu_EasyLoadoutFunctionApparel = "Allow Apparel",
+    ContextMenu_EasyLoadoutFunctionEquipment = "Allow Equipment",
+    ContextMenu_EasyLoadoutFunctionItem = "Allow Items",
+    ContextMenu_EasyLoadoutFunctionPrivate = "Private"
+    ContextMenu_EasyLoadoutFunctionUndress = "Undress"
+    ContextMenu_EasyLoadoutConfig = "Configuration"
+    ContextMenu_EasyLoadoutConfigRemoveTag = "Remove"
+    ContextMenu_EasyLoadoutManage = "Manage"
+    ContextMenu_EasyLoadoutRegisterLoadout = "Register"
+    ContextMenu_EasyLoadoutRegisterAndStoreLoadout = "Store and Register"
+    ContextMenu_EasyLoadoutRemoveLoadout = "Clear"
+    ContextMenu_EasyLoadoutLoadouts = "Loadouts",
+    ContextMenu_EasyLoadoutWearLoadout = "Wear",
+    ContextMenu_EasyLoadoutPickUpLoadout = "Pick up",
+    ContextMenu_EasyLoadoutStoreLoadout = "Store",
+}

@@ -1,0 +1,23 @@
+ContextMenu_DE = {
+    ContextMenu_EasyLoadoutApplyTag = "Loadout Liste anwenden",
+    ContextMenu_EasyLoadoutRenameTag = "Loadout Liste umbenennen",
+    ContextMenu_EasyLoadoutConfigType = "Typ",
+    ContextMenu_EasyLoadoutConfigTypeId = "Kleidung/Ausrüstung nach eindeutiger ID",
+    ContextMenu_EasyLoadoutConfigTypeName = "Kleidung/Ausrüstung nach Name",
+    ContextMenu_EasyLoadoutFunctions = "Funktionen",
+    ContextMenu_EasyLoadoutFunctionApparel = "Kleidung zulassen",
+    ContextMenu_EasyLoadoutFunctionEquipment = "Ausrüstung zulassen",
+    ContextMenu_EasyLoadoutFunctionItem = "Gegenstände zulassen",
+    ContextMenu_EasyLoadoutFunctionPrivate = "Privat"
+    ContextMenu_EasyLoadoutFunctionUndress = "Entkleiden"
+    ContextMenu_EasyLoadoutConfig = "Konfiguration"
+    ContextMenu_EasyLoadoutConfigRemoveTag = "Entfernen"
+    ContextMenu_EasyLoadoutManage = "Verwalten"
+    ContextMenu_EasyLoadoutRegisterLoadout = "Registrieren"
+    ContextMenu_EasyLoadoutRegisterAndStoreLoadout = "Lagern und registrieren"
+    ContextMenu_EasyLoadoutRemoveLoadout = "Leeren"
+    ContextMenu_EasyLoadoutLoadouts = "Loadouts",
+    ContextMenu_EasyLoadoutWearLoadout = "Ausrüsten",
+    ContextMenu_EasyLoadoutPickUpLoadout = "Nehmen",
+    ContextMenu_EasyLoadoutStoreLoadout = "Lagern",
+}
