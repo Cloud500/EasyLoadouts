@@ -150,7 +150,7 @@ Coming soon
 
 ## Bugs/Features
 
-Coming soon
+[Github Issues](https://github.com/Cloud500/EasyLoadouts/issues/new/choose)
 
 # Credits
 

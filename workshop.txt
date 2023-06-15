@@ -117,7 +117,7 @@ description=[h1]Help and support[/h1]
 description=[h2]Translation[/h2]
 description=Coming soon
 description=[h2]Bugs/Features[/h2]
-description=Coming soon
+description=[url=https://github.com/Cloud500/EasyLoadouts/issues/new/choose]Github Issues[/url]
 description=[hr][/hr]
 description=[h1]Credits[/h1]
 description=[list]
