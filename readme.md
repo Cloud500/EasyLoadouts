@@ -146,7 +146,7 @@ So far no incompatibility is known
 
 ## Translation
 
-Coming soon
+[Help to Translate](https://poeditor.com/join/project/lskTKeAc7p)
 
 ## Bugs/Features
 

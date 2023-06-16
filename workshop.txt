@@ -115,7 +115,7 @@ description=So far no incompatibility is known
 description=[hr][/hr]
 description=[h1]Help and support[/h1]
 description=[h2]Translation[/h2]
-description=Coming soon
+description=[url=https://poeditor.com/join/project/lskTKeAc7p]Help to Translate[/url]
 description=[h2]Bugs/Features[/h2]
 description=[url=https://github.com/Cloud500/EasyLoadouts/issues/new/choose]Github Issues[/url]
 description=[hr][/hr]
