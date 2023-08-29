@@ -93,7 +93,8 @@ function EasyLoadoutActionTransfer:loadUndressItems(character)
         local item = character:getWornItems():getItemByIndex(i)
         if (item:getDisplayCategory() ~= "Bandage")
                 and (item:getDisplayCategory() ~= "ZedDmg")
-                and (item:getDisplayCategory() ~= "Wound") then
+                and (item:getDisplayCategory() ~= "Wound")
+                and (item:getBodyLocation() ~= "RasSkin") then
             table.insert(items, item)
         end
     end

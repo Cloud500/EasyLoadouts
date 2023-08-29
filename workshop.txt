@@ -2,7 +2,7 @@ version=1
 id=2982771622
 title=Easy Loadout
 description=[h1]Easy Loadouts[/h1]
-description=[img]https://img.shields.io/badge/Version-0.2.0-orange?style=plastic[/img]
+description=[img]https://img.shields.io/badge/Version-0.2.1-orange?style=plastic[/img]
 description=
 description=Mod for Project Zomboid to equip apparel/equipment/items easily.
 description=

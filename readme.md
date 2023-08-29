@@ -1,6 +1,6 @@
 # Easy Loadouts
 
-![Version](https://img.shields.io/badge/Version-0.2.0-orange?style=plastic)
+![Version](https://img.shields.io/badge/Version-0.2.1-orange?style=plastic)
 [![Steam Favorites](https://img.shields.io/steam/favorites/2982771622?logo=steam&style=plastic)](https://steamcommunity.com/sharedfiles/filedetails/?id=2982771622)
 [![Steam Subscriptions](https://img.shields.io/steam/subscriptions/2982771622?logo=steam&style=plastic)](https://steamcommunity.com/sharedfiles/filedetails/?id=2982771622)
 
