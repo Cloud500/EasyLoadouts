@@ -180,7 +180,7 @@ function EasyLoadoutItemUtils.toolTipListData(dataList)
             dataListText = dataListText .. EasyLoadoutItemUtils.toolTipItemData(itemData)
         end
     else
-        dataListText = string.format("<SETX:%d> %s \n", EasyLoadoutItemUtils.space, getText("UI_EasyLoadout_UI_None"))
+        dataListText = string.format("<SETX:%d> %s \n", EasyLoadoutItemUtils.space, getText("ContextMenu_EasyLoadout_None"))
     end
     return dataListText
 end

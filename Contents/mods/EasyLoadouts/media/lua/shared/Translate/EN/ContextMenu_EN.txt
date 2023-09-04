@@ -21,4 +21,5 @@ ContextMenu_EN = {
     ContextMenu_EasyLoadoutPickUpLoadout = "Pick up",
     ContextMenu_EasyLoadoutStoreLoadout = "Store",
     ContextMenu_EasyLoadoutInfo = "Info",
+    ContextMenu_EasyLoadout_None = "none",
 }
