@@ -1,0 +1,91 @@
+name: Deployment
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag:
+    name: Create Tag and Changelog
+    runs-on: ubuntu-latest
+    outputs:
+      release_skipped: ${{ steps.versionBump.outputs.skipped }}
+      version_tag: ${{ steps.versionBump.outputs.tag }}
+      changelog: ${{ steps.versionBump.outputs.clean_changelog }}
+
+    steps:
+      - id: checkout
+        name: Checkout Git repo
+        uses: actions/checkout@master
+
+      - id: versionBump
+        name: Automated Version Bump
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          release-count: 0
+          tag-prefix: "v"
+          version-file: '.github/version.json'
+
+  replace-version:
+    runs-on: ubuntu-latest
+    needs: tag
+    name: Replace the version on readme.md
+
+    steps:
+      - id: checkout
+        name: Checkout Git repo
+        uses: actions/checkout@master
+      - id: rename readme
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "v\d+\.\d+\.\d+"
+          replace: ${{ needs.tag.outputs.version_tag }}
+          include: "**readme.md"
+          regex: true
+      - id: rename workshop
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "v\d+\.\d+\.\d+"
+          replace: ${{ needs.tag.outputs.version_tag }}
+          include: "**workshop.txt"
+          regex: true
+      - id: rename mod.info
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "v\d+\.\d+\.\d+"
+          replace: ${{ needs.tag.outputs.version_tag }}
+          include: "Contents/mods/Easyloadouts/mod.info"
+          regex: true
+      - id: rename EasyLoadout.lua
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "v\d+\.\d+\.\d+"
+          replace: ${{ needs.tag.outputs.version_tag }}
+          include: "**EasyLoadout.lua"
+          regex: true
+      - id: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'chore(release): ${{ needs.tag.outputs.version_tag }} [change_files]'
+
+  release:
+    name: Create a Release
+    runs-on: ubuntu-latest
+    needs: tag
+    if: needs.tag.outputs.release_skipped == 'false'
+
+    steps:
+      - id: checkout
+        name: Checkout Git repo
+        uses: actions/checkout@master
+
+      - id: release
+        name: Automated GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ needs.tag.outputs.version_tag }}
+          release_name: ${{ needs.tag.outputs.version_tag }}
+          body: ${{ needs.tag.outputs.changelog }}
