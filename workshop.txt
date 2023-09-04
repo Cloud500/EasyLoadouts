@@ -147,5 +147,6 @@ description=[/list]
 description=[hr][/hr]
 description=Workshop ID: 2982771622
 description=Mod ID: EasyLoadouts
+description=Mod ID: EasyLoadoutsPluginManageUI
 tags=Build 41;Clothing/Armor;Items
 visibility=public
