@@ -1,6 +1,6 @@
 # Easy Loadouts
 
-![Version](https://img.shields.io/badge/Version-0.2.1-orange?style=plastic)
+![Version](https://img.shields.io/badge/Version-0.6.0-orange?style=plastic)
 [![Steam Favorites](https://img.shields.io/steam/favorites/2982771622?logo=steam&style=plastic)](https://steamcommunity.com/sharedfiles/filedetails/?id=2982771622)
 [![Steam Subscriptions](https://img.shields.io/steam/subscriptions/2982771622?logo=steam&style=plastic)](https://steamcommunity.com/sharedfiles/filedetails/?id=2982771622)
 
@@ -19,6 +19,7 @@ by [Cosmic](https://steamcommunity.com/profiles/76561198041121447) I wrote an "e
 - Settings adjustable for each Loadout
 - Default Loadout settings via [Mod Options](https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993)
 - Automatic Hotbar equipping
+- Upgrade system for breaking changes
 
 ## Quick How to
 
@@ -132,7 +133,19 @@ the container will be taken.
 
 ## Manage UI
 
-tba
+- Mod Name: EasyLoadoutsPluginManageUI
+- Requires: [Simple UI library](https://steamcommunity.com/workshop/filedetails/?id=2760035814)
+
+Replaces the loadout configuration with its own user interface.
+In addition to the configuration, individual parts can be removed or added from the inventory.
+
+**Features:**
+
+- Manage Loadout configuration
+- Add parts from Inventory to Loadout
+- Remove parts from Loadout
+- Change Item count on saved Loadout Items
+
 
 # FAQ
 

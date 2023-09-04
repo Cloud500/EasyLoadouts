@@ -1,6 +1,6 @@
 name=Easy Loadouts Manager UI plugin
 id=EasyLoadoutsPluginManageUI
-require=EasyLoadouts
+require=EasyLoadouts,UIAPI
 poster=poster.png
 description=Plugin for Easy Loadouts to add an UI to manage the Loadouts
-modVersion=0.1.0
+modVersion=1.0.0
