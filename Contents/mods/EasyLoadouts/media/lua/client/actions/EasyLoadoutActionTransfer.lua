@@ -74,11 +74,13 @@ function EasyLoadoutActionTransfer:loadLoadoutItems(container, loadout)
         end
     end
     local item_ids = {}
-    for _, itemData in ipairs(loadout.items) do
-        local item = EasyLoadoutItemUtils.getItem(itemData, loadout, container, true, item_ids)
-        if item then
-            table.insert(item_ids, item:getID())
-            table.insert(items, item)
+    for _, itemData in pairs(loadout.items) do
+        for i = itemData.count, 1, -1 do
+            local item = EasyLoadoutItemUtils.getItem(itemData, loadout, container, true, item_ids)
+            if item then
+                table.insert(item_ids, item:getID())
+                table.insert(items, item)
+            end
         end
     end
     return items

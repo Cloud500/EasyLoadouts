@@ -20,4 +20,6 @@ ContextMenu_DE = {
     ContextMenu_EasyLoadoutWearLoadout = "Ausrüsten",
     ContextMenu_EasyLoadoutPickUpLoadout = "Nehmen",
     ContextMenu_EasyLoadoutStoreLoadout = "Lagern",
+    ContextMenu_EasyLoadoutInfo = "Info",
+    ContextMenu_EasyLoadout_None = "keine",
 }

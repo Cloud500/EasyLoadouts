@@ -1,0 +1,14 @@
+UI_DE =
+{
+    UI_EasyLoadout_UI_Main_Title = "Loadout Manager",
+    UI_EasyLoadout_UI_Add_Loadout = "Aus Inventar hinzufügen",
+    UI_EasyLoadout_UI_Edit_Loadout = "Loadout bearbeiten",
+    UI_EasyLoadout_UI_Save_Config = "Konfig speichern",
+    UI_EasyLoadout_UI_Close = "Menü schließen",
+    UI_EasyLoadout_UI_Add_Loadout = "Zum Loadout hinzufügen",
+    UI_EasyLoadout_UI_Add = "Hinzufügen",
+    UI_EasyLoadout_UI_Edit_Loadout = "Loadout aktualisieren",
+    UI_EasyLoadout_UI_Update = "Aktualisieren",
+    UI_EasyLoadout_UI_None = "Keine",
+    UI_EasyLoadout_UI_Remove_Tag = "Loadout entfernen",
+}

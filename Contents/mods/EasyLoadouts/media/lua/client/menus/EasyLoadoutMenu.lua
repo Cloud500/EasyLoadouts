@@ -1,6 +1,9 @@
 require "EasyLoadout"
 local EasyLoadoutUtils = require("utils/EasyLoadoutUtils")
+local EasyLoadoutItemUtils = require("utils/EasyLoadoutItemUtils")
 local EasyLoadoutEvents = require("EasyLoadoutEvents")
+local EasyLoadoutPluginManageUI = require("menus/EasyLoadoutPluginManageUI")
+local EasyLoadoutCompatibilityUtils = require("utils/EasyLoadoutCompatibilityUtils")
 
 ---@param configMenu ISContextMenu
 ---@param container ItemContainer
@@ -13,7 +16,6 @@ function buildLoadoutTypeMenu(configMenu, container, loadout)
                                            EasyLoadoutEvents.setConfigType, loadout, "id")
     addOptionInfo(optionSetID, getText("ContextMenu_EasyLoadoutConfigTypeId"),
                   getText("Tooltip_EasyLoadoutConfigTypeId"))
-
 
     local optionSetName = typeMenu:addOption(getText("ContextMenu_EasyLoadoutConfigTypeName"), container,
                                              EasyLoadoutEvents.setConfigType, loadout, "name")
@@ -74,14 +76,28 @@ function buildLoadoutFunctionsMenu(configMenu, character, container, loadout)
                   getText("Tooltip_EasyLoadoutFunctionItem"), true, loadout.config.items)
 
     local functionPrivate = functionMenu:addOption(getText("ContextMenu_EasyLoadoutFunctionPrivate"), container,
-                                                 EasyLoadoutEvents.setFunctionPrivate, loadout, character)
+                                                   EasyLoadoutEvents.setFunctionPrivate, loadout, character)
     addOptionInfo(functionPrivate, getText("ContextMenu_EasyLoadoutFunctionPrivate"),
                   getText("Tooltip_EasyLoadoutFunctionPrivate"), true, loadout.config.private)
 
     local functionUndress = functionMenu:addOption(getText("ContextMenu_EasyLoadoutFunctionUndress"), container,
-                                                 EasyLoadoutEvents.setFunctionUndress, loadout)
+                                                   EasyLoadoutEvents.setFunctionUndress, loadout)
     addOptionInfo(functionUndress, getText("ContextMenu_EasyLoadoutFunctionUndress"),
                   getText("Tooltip_EasyLoadoutFunctionUndress"), true, loadout.config.undress)
+end
+
+function buildRemoveTagMenu(configMenu, container, easyLoadoutData, loadoutName)
+    local optionRemoveTag = configMenu:addOption(getText("ContextMenu_EasyLoadoutConfigRemoveTag"), container,
+                                                 EasyLoadoutEvents.removeTag, easyLoadoutData, loadoutName)
+    addOptionInfo(optionRemoveTag, getText("ContextMenu_EasyLoadoutConfigRemoveTag"),
+                  getText("Tooltip_EasyLoadoutConfigRemoveTag"))
+    optionRemoveTag.iconTexture = getTexture(EasyLoadout.icons.remove)
+end
+
+function buildManageUIPluginMenu(loadoutMenu, loadout, character, loadoutName, container, easyLoadoutData)
+    loadoutMenu:addOption(getText("UI_EasyLoadout_UI_Main_Title"),
+                          loadout, EasyLoadoutPluginManageUI.createMenu,
+                          character, loadoutName, container, easyLoadoutData)
 end
 
 ---@param loadoutMenu ISContextMenu
@@ -91,17 +107,16 @@ end
 ---@param loadoutName string
 ---@param loadout EasyLoadoutDataLoadout
 function buildConfigMenu(loadoutMenu, character, container, easyLoadoutData, loadoutName, loadout)
-    local configMenu = loadoutMenu:getNew(loadoutMenu)
-    loadoutMenu:addSubMenu(loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutConfig")), configMenu)
+    if EasyLoadoutPluginManageUI ~= nil then
+        buildManageUIPluginMenu(loadoutMenu, loadout, character, loadoutName, container, easyLoadoutData)
+    else
+        local configMenu = loadoutMenu:getNew(loadoutMenu)
+        loadoutMenu:addSubMenu(loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutConfig")), configMenu)
 
-    buildLoadoutFunctionsMenu(configMenu, character, container, loadout)
-    buildLoadoutTypeMenu(configMenu, container, loadout)
-
-    local optionRemoveTag = configMenu:addOption(getText("ContextMenu_EasyLoadoutConfigRemoveTag"), container,
-                                                 EasyLoadoutEvents.removeTag, easyLoadoutData, loadoutName)
-    addOptionInfo(optionRemoveTag, getText("ContextMenu_EasyLoadoutConfigRemoveTag"),
-                  getText("Tooltip_EasyLoadoutConfigRemoveTag"))
-    optionRemoveTag.iconTexture = getTexture(EasyLoadout.icons.remove)
+        buildLoadoutFunctionsMenu(configMenu, character, container, loadout)
+        buildLoadoutTypeMenu(configMenu, container, loadout)
+        buildRemoveTagMenu(configMenu, container, easyLoadoutData, loadoutName)
+    end
 end
 
 ---@param loadoutMenu ISContextMenu
@@ -133,6 +148,57 @@ function buildManageMenu(loadoutMenu, character, container, loadout)
                   getText("Tooltip_EasyLoadoutRemoveLoadout"))
 end
 
+function buildHandleMenu(loadoutMenu, loadout, character, container)
+    if loadout.config.apparel or loadout.config.equipment then
+        local optionWearLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutWearLoadout"),
+                                                        character, EasyLoadoutEvents.wearLoadout,
+                                                        container,
+                                                        loadout)
+        addOptionInfo(optionWearLoadout, getText("ContextMenu_EasyLoadoutWearLoadout"),
+                      getText("Tooltip_EasyLoadoutWearLoadout"))
+    end
+
+    local optionPickUpLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutPickUpLoadout"),
+                                                      character, EasyLoadoutEvents.pickUpLoadout,
+                                                      container,
+                                                      loadout)
+    addOptionInfo(optionPickUpLoadout, getText("ContextMenu_EasyLoadoutPickUpLoadout"),
+                  getText("Tooltip_EasyLoadoutPickUpLoadout"))
+
+    local optionStoreLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutStoreLoadout"),
+                                                     character, EasyLoadoutEvents.storeLoadout,
+                                                     container,
+                                                     loadout)
+    addOptionInfo(optionStoreLoadout, getText("ContextMenu_EasyLoadoutStoreLoadout"),
+                  getText("Tooltip_EasyLoadoutStoreLoadout"))
+end
+
+function buildInfoMenu(loadoutMenu, loadout, loadoutName)
+    local optionInfo = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutInfo"))
+    optionInfo.toolTip = EasyLoadoutItemUtils.toolTipRegistered(loadout, loadoutName)
+end
+
+function buildUpdateMenu(loadoutMenu, loadout, container)
+    loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutUpdate"),
+                          loadout, EasyLoadoutCompatibilityUtils.update, container)
+
+end
+
+function buildLoadoutMenu(loadoutSubMenu, loadoutName, loadout, character, container, easyLoadoutData)
+    local loadoutMenu = loadoutSubMenu:getNew(loadoutSubMenu)
+    loadoutSubMenu:addSubMenu(loadoutSubMenu:addOption(loadoutName), loadoutMenu)
+
+    if EasyLoadoutCompatibilityUtils.needUpdate(loadout) then
+        buildUpdateMenu(loadoutMenu, loadout, container)
+    else
+        buildInfoMenu(loadoutMenu, loadout, loadoutName)
+
+        buildHandleMenu(loadoutMenu, loadout, character, container)
+        buildManageMenu(loadoutMenu, character, container, loadout)
+        buildConfigMenu(loadoutMenu, character, container, easyLoadoutData, loadoutName, loadout)
+    end
+end
+
 ---@param context ISContextMenu
 ---@param easyLoadoutData EasyLoadoutData
 ---@param character IsoPlayer
@@ -145,34 +211,7 @@ function buildLoadoutContextMenu(context, easyLoadoutData, character, container)
         local gameType = getWorld():getGameMode()
         if loadout.config.private == false or loadout.config.player == character:getSteamID()
                 or character:isAccessLevel("admin") or gameType ~= "Multiplayer" then
-            local loadoutMenu = loadoutSubMenu:getNew(loadoutSubMenu)
-            loadoutSubMenu:addSubMenu(loadoutSubMenu:addOption(loadoutName), loadoutMenu)
-
-            if loadout.config.apparel or loadout.config.equipment then
-                local optionWearLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutWearLoadout"),
-                                                                character, EasyLoadoutEvents.wearLoadout,
-                                                                container,
-                                                                loadout)
-                addOptionInfo(optionWearLoadout, getText("ContextMenu_EasyLoadoutWearLoadout"),
-                              getText("Tooltip_EasyLoadoutWearLoadout"))
-            end
-
-            local optionPickUpLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutPickUpLoadout"),
-                                                              character, EasyLoadoutEvents.pickUpLoadout,
-                                                              container,
-                                                              loadout)
-            addOptionInfo(optionPickUpLoadout, getText("ContextMenu_EasyLoadoutPickUpLoadout"),
-                          getText("Tooltip_EasyLoadoutPickUpLoadout"))
-
-            local optionStoreLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutStoreLoadout"),
-                                                             character, EasyLoadoutEvents.storeLoadout,
-                                                             container,
-                                                             loadout)
-            addOptionInfo(optionStoreLoadout, getText("ContextMenu_EasyLoadoutStoreLoadout"),
-                          getText("Tooltip_EasyLoadoutStoreLoadout"))
-
-            buildManageMenu(loadoutMenu, character, container, loadout)
-            buildConfigMenu(loadoutMenu, character, container, easyLoadoutData, loadoutName, loadout)
+            buildLoadoutMenu(loadoutSubMenu, loadoutName, loadout, character, container, easyLoadoutData)
         end
     end
 end

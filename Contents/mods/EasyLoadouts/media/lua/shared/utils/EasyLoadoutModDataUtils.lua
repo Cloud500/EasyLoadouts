@@ -1,10 +1,10 @@
 ---@alias EasyLoadoutModDataContainer {easyLoadout: EasyLoadoutData}
 ---@alias EasyLoadoutModDataBag {easyLoadout: EasyLoadoutData[]}
 ---@alias EasyLoadoutData {loadouts: EasyLoadoutDataLoadout[], enabled: boolean, type: string}
----@alias EasyLoadoutDataLoadout {config: EasyLoadoutDataConfig, apparel: EasyLoadoutDataApparel[], equipment: EasyLoadoutDataEquipment[], items: EasyLoadoutDataItems[], registered: boolean}
----@alias EasyLoadoutDataApparel {item: string, attachedSlot: string}
----@alias EasyLoadoutDataEquipment {item: string, attachedSlot: string, slotType: string}
----@alias EasyLoadoutDataItems {item: string}
+---@alias EasyLoadoutDataLoadout {config: EasyLoadoutDataConfig, apparel: EasyLoadoutDataApparel[], equipment: EasyLoadoutDataEquipment[], items: EasyLoadoutDataItems[], registered: boolean, internalVersion: number}
+---@alias EasyLoadoutDataApparel {item: string, attachedSlot: string, fullType: string}
+---@alias EasyLoadoutDataEquipment {item: string, attachedSlot: string, slotType: string, fullType: string}
+---@alias EasyLoadoutDataItems {item: string, fullType: string, count: number}
 ---@alias EasyLoadoutDataConfig {type: string, private: boolean, player: string, undress: boolean, apparel: boolean, equipment: boolean, items: boolean,}
 
 require "EasyLoadout"
@@ -16,11 +16,11 @@ function EasyLoadoutModDataUtils.createLoadoutData()
     local test = EasyLoadout
 
     local loadoutData = {
-        registered = false,
-        apparel    = {},
-        equipment  = {},
-        items      = {},
-        config     = {
+        registered      = false,
+        apparel         = {},
+        equipment       = {},
+        items           = {},
+        config          = {
             type      = EasyLoadout.getType(),
             private   = false,
             player    = nil,
@@ -29,6 +29,7 @@ function EasyLoadoutModDataUtils.createLoadoutData()
             equipment = EasyLoadout.defaults.equipment,
             items     = EasyLoadout.defaults.items,
         },
+        internalVersion = EasyLoadout.internalVersion,
     }
     return loadoutData
 end
