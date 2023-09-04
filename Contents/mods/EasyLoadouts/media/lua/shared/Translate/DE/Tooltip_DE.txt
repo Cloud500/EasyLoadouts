@@ -14,5 +14,5 @@ Tooltip_DE = {
     Tooltip_EasyLoadoutStoreLoadout = "Packe die Items des Loadouts zurück in den Behälter (getragen und nicht getragen).",
     Tooltip_EasyLoadoutConfigTypeId = "Loadout bezieht sich auf die Ids der Kleidung und Ausrüstung.",
     Tooltip_EasyLoadoutConfigTypeName = "Loadout bezieht sich auf die Namen der Kleidung und Ausrüstung.",
-    Tooltip_EasyLoadoutUpdate = "Aktualisiert das Loadout auf die aktuelle Version\nWichtig: Alle Objekte des Loadouts müssen im Container sein."
+    Tooltip_EasyLoadoutUpdate = "Aktualisiert das Loadout auf die aktuelle Version<br>Wichtig: Alle Objekte des Loadouts müssen im Container sein."
 }
