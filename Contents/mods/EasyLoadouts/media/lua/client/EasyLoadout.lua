@@ -2,7 +2,8 @@ EasyLoadout = {}
 
 EasyLoadout.name = 'EasyLoadout'
 EasyLoadout.author = 'Cloud500'
-EasyLoadout.version = 'v1.0.0'
+EasyLoadout.version = 'v0.2.1'
+EasyLoadout.internalVersion = 2
 
 EasyLoadout.defaults = {
     type      = 2,
