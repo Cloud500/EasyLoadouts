@@ -1,6 +1,7 @@
 require "EasyLoadout"
 local EasyLoadoutUtils = require("utils/EasyLoadoutUtils")
 local EasyLoadoutEvents = require("EasyLoadoutEvents")
+local EasyLoadoutPluginManageUI = require("menus/EasyLoadoutPluginManageUI")
 
 ---@param configMenu ISContextMenu
 ---@param container ItemContainer
@@ -13,7 +14,6 @@ function buildLoadoutTypeMenu(configMenu, container, loadout)
                                            EasyLoadoutEvents.setConfigType, loadout, "id")
     addOptionInfo(optionSetID, getText("ContextMenu_EasyLoadoutConfigTypeId"),
                   getText("Tooltip_EasyLoadoutConfigTypeId"))
-
 
     local optionSetName = typeMenu:addOption(getText("ContextMenu_EasyLoadoutConfigTypeName"), container,
                                              EasyLoadoutEvents.setConfigType, loadout, "name")
@@ -74,14 +74,28 @@ function buildLoadoutFunctionsMenu(configMenu, character, container, loadout)
                   getText("Tooltip_EasyLoadoutFunctionItem"), true, loadout.config.items)
 
     local functionPrivate = functionMenu:addOption(getText("ContextMenu_EasyLoadoutFunctionPrivate"), container,
-                                                 EasyLoadoutEvents.setFunctionPrivate, loadout, character)
+                                                   EasyLoadoutEvents.setFunctionPrivate, loadout, character)
     addOptionInfo(functionPrivate, getText("ContextMenu_EasyLoadoutFunctionPrivate"),
                   getText("Tooltip_EasyLoadoutFunctionPrivate"), true, loadout.config.private)
 
     local functionUndress = functionMenu:addOption(getText("ContextMenu_EasyLoadoutFunctionUndress"), container,
-                                                 EasyLoadoutEvents.setFunctionUndress, loadout)
+                                                   EasyLoadoutEvents.setFunctionUndress, loadout)
     addOptionInfo(functionUndress, getText("ContextMenu_EasyLoadoutFunctionUndress"),
                   getText("Tooltip_EasyLoadoutFunctionUndress"), true, loadout.config.undress)
+end
+
+function buildRemoveTagMenu(configMenu, container, easyLoadoutData, loadoutName)
+    local optionRemoveTag = configMenu:addOption(getText("ContextMenu_EasyLoadoutConfigRemoveTag"), container,
+                                                 EasyLoadoutEvents.removeTag, easyLoadoutData, loadoutName)
+    addOptionInfo(optionRemoveTag, getText("ContextMenu_EasyLoadoutConfigRemoveTag"),
+                  getText("Tooltip_EasyLoadoutConfigRemoveTag"))
+    optionRemoveTag.iconTexture = getTexture(EasyLoadout.icons.remove)
+end
+
+function buildManageUIPluginMenu(loadoutMenu, loadout, character, loadoutName, container, easyLoadoutData)
+    loadoutMenu:addOption(getText("UI_EasyLoadout_UI_Main_Title"),
+                          loadout, EasyLoadoutPluginManageUI.createMenu,
+                          character, loadoutName, container, easyLoadoutData)
 end
 
 ---@param loadoutMenu ISContextMenu
@@ -91,17 +105,16 @@ end
 ---@param loadoutName string
 ---@param loadout EasyLoadoutDataLoadout
 function buildConfigMenu(loadoutMenu, character, container, easyLoadoutData, loadoutName, loadout)
-    local configMenu = loadoutMenu:getNew(loadoutMenu)
-    loadoutMenu:addSubMenu(loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutConfig")), configMenu)
+    if EasyLoadoutPluginManageUI ~= nil then
+        buildManageUIPluginMenu(loadoutMenu, loadout, character, loadoutName, container, easyLoadoutData)
+    else
+        local configMenu = loadoutMenu:getNew(loadoutMenu)
+        loadoutMenu:addSubMenu(loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutConfig")), configMenu)
 
-    buildLoadoutFunctionsMenu(configMenu, character, container, loadout)
-    buildLoadoutTypeMenu(configMenu, container, loadout)
-
-    local optionRemoveTag = configMenu:addOption(getText("ContextMenu_EasyLoadoutConfigRemoveTag"), container,
-                                                 EasyLoadoutEvents.removeTag, easyLoadoutData, loadoutName)
-    addOptionInfo(optionRemoveTag, getText("ContextMenu_EasyLoadoutConfigRemoveTag"),
-                  getText("Tooltip_EasyLoadoutConfigRemoveTag"))
-    optionRemoveTag.iconTexture = getTexture(EasyLoadout.icons.remove)
+        buildLoadoutFunctionsMenu(configMenu, character, container, loadout)
+        buildLoadoutTypeMenu(configMenu, container, loadout)
+        buildRemoveTagMenu(configMenu, container, easyLoadoutData, loadoutName)
+    end
 end
 
 ---@param loadoutMenu ISContextMenu
