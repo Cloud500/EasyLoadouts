@@ -77,10 +77,10 @@ function EasyLoadoutPatch1:mergeItems()
 
     ---@param itemData EasyLoadoutDataItems
     for _, itemData in pairs(self.loadout.items) do
-        if newItemList.items[itemData.item] ~= nil then
-            newItemList.items[itemData.item].count = newItemList.items[itemData.item].count + 1
+        if newItemList[itemData.item] ~= nil then
+            newItemList[itemData.item].count = newItemList[itemData.item].count + 1
         else
-            newItemList.items[itemData.item] = {
+            newItemList[itemData.item] = {
                 item     = itemData.item,
                 fullType = itemData.fullType,
                 count    = 1

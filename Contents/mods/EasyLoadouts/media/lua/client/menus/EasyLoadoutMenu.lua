@@ -3,6 +3,7 @@ local EasyLoadoutUtils = require("utils/EasyLoadoutUtils")
 local EasyLoadoutItemUtils = require("utils/EasyLoadoutItemUtils")
 local EasyLoadoutEvents = require("EasyLoadoutEvents")
 local EasyLoadoutPluginManageUI = require("menus/EasyLoadoutPluginManageUI")
+local EasyLoadoutCompatibilityUtils = require("utils/EasyLoadoutCompatibilityUtils")
 
 ---@param configMenu ISContextMenu
 ---@param container ItemContainer
@@ -147,6 +148,57 @@ function buildManageMenu(loadoutMenu, character, container, loadout)
                   getText("Tooltip_EasyLoadoutRemoveLoadout"))
 end
 
+function buildHandleMenu(loadoutMenu, loadout, character, container)
+    if loadout.config.apparel or loadout.config.equipment then
+        local optionWearLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutWearLoadout"),
+                                                        character, EasyLoadoutEvents.wearLoadout,
+                                                        container,
+                                                        loadout)
+        addOptionInfo(optionWearLoadout, getText("ContextMenu_EasyLoadoutWearLoadout"),
+                      getText("Tooltip_EasyLoadoutWearLoadout"))
+    end
+
+    local optionPickUpLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutPickUpLoadout"),
+                                                      character, EasyLoadoutEvents.pickUpLoadout,
+                                                      container,
+                                                      loadout)
+    addOptionInfo(optionPickUpLoadout, getText("ContextMenu_EasyLoadoutPickUpLoadout"),
+                  getText("Tooltip_EasyLoadoutPickUpLoadout"))
+
+    local optionStoreLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutStoreLoadout"),
+                                                     character, EasyLoadoutEvents.storeLoadout,
+                                                     container,
+                                                     loadout)
+    addOptionInfo(optionStoreLoadout, getText("ContextMenu_EasyLoadoutStoreLoadout"),
+                  getText("Tooltip_EasyLoadoutStoreLoadout"))
+end
+
+function buildInfoMenu(loadoutMenu, loadout, loadoutName)
+    local optionInfo = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutInfo"))
+    optionInfo.toolTip = EasyLoadoutItemUtils.toolTipRegistered(loadout, loadoutName)
+end
+
+function buildUpdateMenu(loadoutMenu, loadout, container)
+    loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutUpdate"),
+                          loadout, EasyLoadoutCompatibilityUtils.update, container)
+
+end
+
+function buildLoadoutMenu(loadoutSubMenu, loadoutName, loadout, character, container, easyLoadoutData)
+    local loadoutMenu = loadoutSubMenu:getNew(loadoutSubMenu)
+    loadoutSubMenu:addSubMenu(loadoutSubMenu:addOption(loadoutName), loadoutMenu)
+
+    if EasyLoadoutCompatibilityUtils.needUpdate(loadout) then
+        buildUpdateMenu(loadoutMenu, loadout, container)
+    else
+        buildInfoMenu(loadoutMenu, loadout, loadoutName)
+
+        buildHandleMenu(loadoutMenu, loadout, character, container)
+        buildManageMenu(loadoutMenu, character, container, loadout)
+        buildConfigMenu(loadoutMenu, character, container, easyLoadoutData, loadoutName, loadout)
+    end
+end
+
 ---@param context ISContextMenu
 ---@param easyLoadoutData EasyLoadoutData
 ---@param character IsoPlayer
@@ -159,37 +211,7 @@ function buildLoadoutContextMenu(context, easyLoadoutData, character, container)
         local gameType = getWorld():getGameMode()
         if loadout.config.private == false or loadout.config.player == character:getSteamID()
                 or character:isAccessLevel("admin") or gameType ~= "Multiplayer" then
-            local loadoutMenu = loadoutSubMenu:getNew(loadoutSubMenu)
-            loadoutSubMenu:addSubMenu(loadoutSubMenu:addOption(loadoutName), loadoutMenu)
-
-            local optionInfo = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutInfo"))
-            optionInfo.toolTip = EasyLoadoutItemUtils.toolTipRegistered(loadout, loadoutName)
-
-            if loadout.config.apparel or loadout.config.equipment then
-                local optionWearLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutWearLoadout"),
-                                                                character, EasyLoadoutEvents.wearLoadout,
-                                                                container,
-                                                                loadout)
-                addOptionInfo(optionWearLoadout, getText("ContextMenu_EasyLoadoutWearLoadout"),
-                              getText("Tooltip_EasyLoadoutWearLoadout"))
-            end
-
-            local optionPickUpLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutPickUpLoadout"),
-                                                              character, EasyLoadoutEvents.pickUpLoadout,
-                                                              container,
-                                                              loadout)
-            addOptionInfo(optionPickUpLoadout, getText("ContextMenu_EasyLoadoutPickUpLoadout"),
-                          getText("Tooltip_EasyLoadoutPickUpLoadout"))
-
-            local optionStoreLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutStoreLoadout"),
-                                                             character, EasyLoadoutEvents.storeLoadout,
-                                                             container,
-                                                             loadout)
-            addOptionInfo(optionStoreLoadout, getText("ContextMenu_EasyLoadoutStoreLoadout"),
-                          getText("Tooltip_EasyLoadoutStoreLoadout"))
-
-            buildManageMenu(loadoutMenu, character, container, loadout)
-            buildConfigMenu(loadoutMenu, character, container, easyLoadoutData, loadoutName, loadout)
+            buildLoadoutMenu(loadoutSubMenu, loadoutName, loadout, character, container, easyLoadoutData)
         end
     end
 end
