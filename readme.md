@@ -128,6 +128,12 @@ the container will be taken.
 - EN
 - DE
 
+# Plugins
+
+## Manage UI
+
+tba
+
 # FAQ
 
 ## Does it work in multiplayer mode?
