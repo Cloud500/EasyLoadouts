@@ -14,4 +14,5 @@ Tooltip_EN = {
     Tooltip_EasyLoadoutStoreLoadout = "Put the items of the Loadout back into the container (worn and not worn).",
     Tooltip_EasyLoadoutConfigTypeId = "Loadout refers to the Ids of apparel and equipment",
     Tooltip_EasyLoadoutConfigTypeName = "Loadout refers to the name of the apparel and equipment",
+    Tooltip_EasyLoadoutUpdate = "Updates the loadout to the current version\nImportant: All objects of the loadout must be in the container.",
 }

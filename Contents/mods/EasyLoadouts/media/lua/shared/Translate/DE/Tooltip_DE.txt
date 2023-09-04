@@ -6,12 +6,13 @@ Tooltip_DE = {
     Tooltip_EasyLoadoutFunctionPrivate = "Setzt das Loadout auf Privat so das nur der Spieler (oder Admins) dieses Loadout verwenden/bearbeiten kann.",
     Tooltip_EasyLoadoutFunctionUndress = "Entferne alle getragene Kleidung bevor das Loadout getragen wird.",
     Tooltip_EasyLoadoutConfigRemoveTag = "Entferne das Loadout von diesem Behälter.",
-    Tooltip_EasyLoadoutRegisterLoadout = "Regestriere die Gegenstände in dem Behälter für dieses Loadout (überschreibt das Loadout).",
-    Tooltip_EasyLoadoutRegisterAndStoreLoadout = "Regestriere die Gegenstände im Inventar (getragen und nicht getragen) für dieses Loadout (überschreibt das Loadout).",
+    Tooltip_EasyLoadoutRegisterLoadout = "Registriere die Gegenstände in dem Behälter für dieses Loadout (überschreibt das Loadout).",
+    Tooltip_EasyLoadoutRegisterAndStoreLoadout = "Registriere die Gegenstände im Inventar (getragen und nicht getragen) für dieses Loadout (überschreibt das Loadout).",
     Tooltip_EasyLoadoutRemoveLoadout = "Entferne alle Gegenstände aus dem Loadout.",
     Tooltip_EasyLoadoutWearLoadout = "Nimm die Items des Loadouts und rüste Kleidung/Equippment aus.",
     Tooltip_EasyLoadoutPickUpLoadout = "Nimm die Items des Loadouts.",
     Tooltip_EasyLoadoutStoreLoadout = "Packe die Items des Loadouts zurück in den Behälter (getragen und nicht getragen).",
     Tooltip_EasyLoadoutConfigTypeId = "Loadout bezieht sich auf die Ids der Kleidung und Ausrüstung.",
     Tooltip_EasyLoadoutConfigTypeName = "Loadout bezieht sich auf die Namen der Kleidung und Ausrüstung.",
+    Tooltip_EasyLoadoutUpdate = "Aktualisiert das Loadout auf die aktuelle Version\nWichtig: Alle Objekte des Loadouts müssen im Container sein."
 }
