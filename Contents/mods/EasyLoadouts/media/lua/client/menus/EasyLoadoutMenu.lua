@@ -1,5 +1,6 @@
 require "EasyLoadout"
 local EasyLoadoutUtils = require("utils/EasyLoadoutUtils")
+local EasyLoadoutItemUtils = require("utils/EasyLoadoutItemUtils")
 local EasyLoadoutEvents = require("EasyLoadoutEvents")
 local EasyLoadoutPluginManageUI = require("menus/EasyLoadoutPluginManageUI")
 
@@ -160,6 +161,9 @@ function buildLoadoutContextMenu(context, easyLoadoutData, character, container)
                 or character:isAccessLevel("admin") or gameType ~= "Multiplayer" then
             local loadoutMenu = loadoutSubMenu:getNew(loadoutSubMenu)
             loadoutSubMenu:addSubMenu(loadoutSubMenu:addOption(loadoutName), loadoutMenu)
+
+            local optionInfo = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutInfo"))
+            optionInfo.toolTip = EasyLoadoutItemUtils.toolTipRegistered(loadout, loadoutName)
 
             if loadout.config.apparel or loadout.config.equipment then
                 local optionWearLoadout = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutWearLoadout"),

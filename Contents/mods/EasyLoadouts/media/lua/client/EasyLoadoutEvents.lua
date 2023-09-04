@@ -133,9 +133,11 @@ function EasyLoadoutEvents.registerApparel(container, loadout)
         local itemType = EasyLoadoutItemUtils.getItemType(item)
 
         if itemType == "apparel" and not EasyLoadoutItemUtils.checkIfAlreadyRegistered(item, loadout) then
+            --EasyLoadoutModDataUtils.registerItem(loadout, nil, "apparel")
             table.insert(loadout.apparel, {
                 item         = EasyLoadoutItemUtils.getItemIdOrName(item, loadout),
                 attachedSlot = "",
+                fullType     = item:getFullType(),
             })
             updateModData = true
         end
@@ -154,10 +156,12 @@ function EasyLoadoutEvents.registerEquipment(character, container, loadout)
         local itemType = EasyLoadoutItemUtils.getItemType(item)
 
         if itemType == "equipment" and not EasyLoadoutItemUtils.checkIfAlreadyRegistered(item, loadout) then
+            --EasyLoadoutModDataUtils.registerItem(loadout, character, "equipment")
             table.insert(loadout.equipment, {
                 item         = EasyLoadoutItemUtils.getItemIdOrName(item, loadout),
                 attachedSlot = item:getAttachedSlot(),
                 slotType     = EasyLoadoutItemUtils.getAttachedSlot(character, item),
+                fullType     = item:getFullType(),
             })
             updateModData = true
         end
@@ -175,9 +179,16 @@ function EasyLoadoutEvents.registerItem(container, loadout)
         local itemType = EasyLoadoutItemUtils.getItemType(item)
 
         if itemType == "item" and not item:isFavorite() then
-            table.insert(loadout.items, {
-                item = item:getName(),
-            })
+            --EasyLoadoutModDataUtils.registerItem(loadout, nil, "item")
+            if loadout.items[item:getName()] ~= nil then
+                loadout.items[item:getName()].count = loadout.items[item:getName()].count + 1
+            else
+                loadout.items[item:getName()] = {
+                    item     = item:getName(),
+                    fullType = item:getFullType(),
+                    count = 1
+                }
+            end
             updateModData = true
         end
     end
