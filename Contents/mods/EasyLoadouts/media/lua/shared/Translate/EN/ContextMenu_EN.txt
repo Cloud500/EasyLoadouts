@@ -22,4 +22,5 @@ ContextMenu_EN = {
     ContextMenu_EasyLoadoutStoreLoadout = "Store",
     ContextMenu_EasyLoadoutInfo = "Info",
     ContextMenu_EasyLoadout_None = "none",
+    ContextMenu_EasyLoadoutUpdate = "Update Loadout",
 }

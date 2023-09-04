@@ -2,7 +2,7 @@ version=1
 id=2982771622
 title=Easy Loadout
 description=[h1]Easy Loadouts[/h1]
-description=[img]https://img.shields.io/badge/Version-v0.2.1-orange?style=plastic[/img]
+description=[img]https://img.shields.io/badge/Version-0.6.0-orange?style=plastic[/img]
 description=
 description=Mod for Project Zomboid to equip apparel/equipment/items easily.
 description=
@@ -18,6 +18,7 @@ description=[*]Loadout can be set to private
 description=[*]Settings adjustable for each Loadout
 description=[*]Default Loadout settings via [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url]
 description=[*]Automatic Hotbar equipping
+description=[*]Upgrade system for breaking changes
 description=[/list]
 description=[hr][/hr]
 description=[h2]Quick How to[/h2]
@@ -103,6 +104,24 @@ description=[h1]Current translations[/h1]
 description=[list]
 description=[*]EN
 description=[*]DE
+description=[/list]
+description=[hr][/hr]
+
+description=[h1]Plugins[/h1]
+description=[h2]Manage UI[/h2]
+description=[list]
+description=[*]Mod Name: EasyLoadoutsPluginManageUI
+description=[*]Requires: [url=https://steamcommunity.com/workshop/filedetails/?id=2760035814]Simple UI library[/url]
+description=[/list]
+description=Replaces the loadout configuration with its own user interface.
+description=In addition to the configuration, individual parts can be removed or added from the inventory.
+description=
+description=[b]Features:[/b]
+description=[list]
+description=[*]Manage Loadout configuration
+description=[*]Add parts from Inventory to Loadout
+description=[*]Remove parts from Loadout
+description=[*]Change Item count on saved Loadout Items
 description=[/list]
 description=[hr][/hr]
 description=[h1]FAQ[/h1]

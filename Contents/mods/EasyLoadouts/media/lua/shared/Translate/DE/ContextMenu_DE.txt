@@ -22,4 +22,5 @@ ContextMenu_DE = {
     ContextMenu_EasyLoadoutStoreLoadout = "Lagern",
     ContextMenu_EasyLoadoutInfo = "Info",
     ContextMenu_EasyLoadout_None = "keine",
+    ContextMenu_EasyLoadoutUpdate = "Loadout aktualisieren",
 }

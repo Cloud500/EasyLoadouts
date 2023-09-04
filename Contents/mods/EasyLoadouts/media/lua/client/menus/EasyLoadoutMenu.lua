@@ -179,9 +179,11 @@ function buildInfoMenu(loadoutMenu, loadout, loadoutName)
 end
 
 function buildUpdateMenu(loadoutMenu, loadout, container)
-    loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutUpdate"),
+    local optionUpdate = loadoutMenu:addOption(getText("ContextMenu_EasyLoadoutUpdate"),
                           loadout, EasyLoadoutCompatibilityUtils.update, container)
 
+    addOptionInfo(optionUpdate, getText("ContextMenu_EasyLoadoutUpdate"),
+                  getText("Tooltip_EasyLoadoutUpdate"))
 end
 
 function buildLoadoutMenu(loadoutSubMenu, loadoutName, loadout, character, container, easyLoadoutData)
