@@ -106,9 +106,10 @@ description=[*]EN
 description=[*]DE
 description=[/list]
 description=[hr][/hr]
-
 description=[h1]Plugins[/h1]
 description=[h2]Manage UI[/h2]
+description=[img]https://img.shields.io/badge/Version-1.0.1-green?style=plastic[/img]
+description=
 description=[list]
 description=[*]Mod Name: EasyLoadoutsPluginManageUI
 description=[*]Requires: [url=https://steamcommunity.com/workshop/filedetails/?id=2760035814]Simple UI library[/url]

@@ -133,6 +133,8 @@ the container will be taken.
 
 ## Manage UI
 
+![Version](https://img.shields.io/badge/Version-1.0.1-green?style=plastic)
+
 - Mod Name: EasyLoadoutsPluginManageUI
 - Requires: [Simple UI library](https://steamcommunity.com/workshop/filedetails/?id=2760035814)
 
