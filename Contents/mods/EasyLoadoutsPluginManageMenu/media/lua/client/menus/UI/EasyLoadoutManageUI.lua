@@ -1,4 +1,5 @@
 local EasyLoadoutUtils = require("utils/EasyLoadoutUtils")
+local EasyLoadoutModDataUtils = require("utils/EasyLoadoutModDataUtils")
 local EasyLoadoutEvents = require("EasyLoadoutEvents")
 local EasyLoadoutEditLoadoutUI = require("menus/UI/EasyLoadoutEditLoadoutUI")
 local EasyLoadoutAddLoadoutUI = require("menus/UI/EasyLoadoutAddLoadoutUI")
@@ -73,6 +74,10 @@ function EasyLoadoutManageUI:new(loadout, character, loadoutName, container, eas
     return o
 end
 
+function EasyLoadoutManageUI:saveModData()
+    EasyLoadoutModDataUtils.transmitModData(self.container)
+end
+
 function EasyLoadoutManageUI:UpdateEditLoadoutMenu()
     local visible = false
     local xPos, yPos
@@ -118,6 +123,7 @@ function EasyLoadoutManageUI:UpdateAddLoadoutMenu()
 end
 
 function EasyLoadoutManageUI:update()
+    self:saveModData()
     self:UpdateEditLoadoutMenu()
     self:UpdateAddLoadoutMenu()
 end
@@ -255,6 +261,7 @@ function EasyLoadoutManageUI:updateConfig()
     elseif self.UI["T_Type"]:getValue() == getText("UI_EasyLoadout_ModOptionType_Id") then
         self.loadout.config.type = "id"
     end
+    self:saveModData()
 end
 
 function EasyLoadoutManageUI:removeTag()

@@ -3,4 +3,4 @@ id=EasyLoadoutsPluginManageUI
 require=EasyLoadouts,UIAPI
 poster=poster.png
 description=Plugin for Easy Loadouts to add an UI to manage the Loadouts
-modVersion=1.0.0
+modVersion=1.0.1
